@@ -1,26 +1,30 @@
-header {
-  display: block;
-  background-color: black;
-  width: 100%;
-  height: 50px;
+body {
+  background-color: #62D9FF;
+  font-family: 'Montserrat';
   color: white;
+  text-align: center;
 }
 
-#headerButtons {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.navButton {
-  float: right;
+.header > h1 {
+  margin: 0.33em 0.33em 0.33em 0.33em;
+  font-size: 48pt;
 }
 
-footer {
-  display: block;
-  width: 100%;
-  height: 50px;
-  background-color: black;
-  color: white;
+.header > img {
+  max-height: 48pt;
 }
 
+.subHeader {
+  font-size: 18pt;
+}
+
+.subHeader > p {
+  margin: 0.1em 0.1em 0.1em 0.1em;
+}
