@@ -5,6 +5,10 @@ body {
   text-align: center;
 }
 
+.main {
+  height: 100vh;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -14,17 +18,51 @@ body {
 
 .header > h1 {
   margin: 0.33em 0.33em 0.33em 0.33em;
-  font-size: 48pt;
+  font-size: 4em;
 }
 
 .header > img {
-  max-height: 48pt;
+  max-height: 4em;
 }
 
 .subHeader {
-  font-size: 18pt;
+  font-size: 1.5em;
 }
 
 .subHeader > p {
-  margin: 0.1em 0.1em 0.1em 0.1em;
+  margin: 5px;
+}
+
+.picker {
+  max-height: 65%;
+  margin: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.picker > .catImage > img {
+  margin: 0 20px 0 20px;
+  outline: solid 2px white;
+}
+
+@media only screen and (min-width: 767px) {
+  .catImage > img {
+    width: 425px;
+  }
+}
+
+/* TODO size images on smaller screens */
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer > a {
+  color: white;
+  margin: 0.625em;
 }
