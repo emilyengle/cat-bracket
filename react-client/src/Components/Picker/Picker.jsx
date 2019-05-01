@@ -17,8 +17,11 @@ class Picker extends Component {
         img2: shuffledCats[1]
       };
 
-      this.displayWinner = this.displayWinner.bind(this);
       this.handleClick = this.handleClick.bind(this);
+      this.handleEliteEight = this.handleEliteEight.bind(this);
+      this.handleFinalFour = this.handleFinalFour.bind(this);
+      this.handleChampionship = this.handleChampionship.bind(this);
+      this.handleWinner = this.handleWinner.bind(this);
   }
 
   shuffleArray(cats) {
@@ -30,11 +33,71 @@ class Picker extends Component {
     return temp;
   }
 
-  displayWinner() {
-    console.log()
+  handleClick(img) {
+    if (this.state.eliteEight.length < 8) {
+      this.handleEliteEight(img);
+    } else if (this.state.finalFour.length < 4) {
+      this.handleFinalFour(img);
+    } else if (this.state.championship.length < 2) {
+      this.handleChampionship(img);
+    } else {
+      this.handleWinner(img);
+    }
   }
 
-  handleClick(img) {
+  handleEliteEight(img) {
+    this.state.eliteEight.push(img);
+    const catIndex = this.state.cats.indexOf(img);
+    if (catIndex < 14) {
+      this.setState({
+        img1: this.state.cats[catIndex + 1 + (catIndex % 2 == 0 ? 1 : 0)],
+        img2: this.state.cats[catIndex + 2 + (catIndex % 2 == 0 ? 1 : 0)]
+      });
+    } else {
+      const shuffledEliteEight = this.shuffleArray(this.state.eliteEight);
+      this.state.eliteEight = shuffledEliteEight;
+      this.setState({
+        img1: this.state.eliteEight[0],
+        img2: this.state.eliteEight[1]
+      });
+    }
+  }
+
+  handleFinalFour(img) {
+    this.state.finalFour.push(img);
+    const catIndex = this.state.eliteEight.indexOf(img);
+    if (catIndex < 6) {
+      this.setState({
+        img1: this.state.eliteEight[catIndex + 1 + (catIndex % 2 == 0 ? 1 : 0)],
+        img2: this.state.eliteEight[catIndex + 2 + (catIndex % 2 == 0 ? 1 : 0)]
+      });
+    } else {
+      const shuffledFinalFour = this.shuffleArray(this.state.finalFour);
+      this.state.finalFour = shuffledFinalFour;
+      this.setState({
+        img1: this.state.finalFour[0],
+        img2: this.state.finalFour[1]
+      });
+    }
+  }
+
+  handleChampionship(img) {
+    this.state.championship.push(img);
+    const catIndex = this.state.finalFour.indexOf(img);
+    if (catIndex < 2) {
+      this.setState({
+        img1: this.state.finalFour[catIndex + 1 + (catIndex % 2 == 0 ? 1 : 0)],
+        img2: this.state.finalFour[catIndex + 2 + (catIndex % 2 == 0 ? 1 : 0)]
+      });
+    } else {
+      this.setState({
+        img1: this.state.championship[0],
+        img2: this.state.championship[1]
+      });
+    }
+  }
+
+  handleWinner(img) {
     
   }
 

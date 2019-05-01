@@ -40,16 +40,17 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-size: 1.5em;
 }
 
 .picker > .catImage > img {
-  margin: 0 20px 0 20px;
+  margin: 0 50px 0 50px;
   outline: solid 2px white;
 }
 
 @media only screen and (min-width: 767px) {
   .catImage > img {
-    width: 425px;
+    width: 350px;
   }
 }
 
