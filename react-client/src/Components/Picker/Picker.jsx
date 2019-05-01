@@ -121,8 +121,8 @@ class Picker extends Component {
       return (
         <div className="picker">
           <CatImage img={img1} onClick={this.handleClick} />
-          <CatImage img={img2} onClick={this.handleClick} />
           <Contenders list={contenders} />
+          <CatImage img={img2} onClick={this.handleClick} />
         </div>
       )
     }
