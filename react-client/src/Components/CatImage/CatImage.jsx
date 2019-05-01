@@ -7,7 +7,7 @@ class CatImage extends Component {
         "1": "angry.png",
         "2": "blackandwhite.png",
         "3": "chunk.png",
-        "4": "frenchgirl.png",
+        "4": "dapper.png",
         "5": "grumpy.png",
         "6": "hairless.png",
         "7": "kitten.png",
@@ -28,7 +28,7 @@ class CatImage extends Component {
   render() {
     return (
       <div className="catImage">
-        <img src={this.state.img} />
+        <img src={this.state.img} onClick={() => this.props.onClick(this.props.img)} />
       </div>
     )
   }

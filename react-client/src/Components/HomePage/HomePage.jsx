@@ -11,7 +11,7 @@ class HomePage extends Component {
         </div>
         <div className="subHeader">
           <p>Choose the superior cat, March Madness tournament-style.</p>
-          <p>At the end, see how many others chose the same cat!</p>
+          <p>Click a picture below to choose your favorite!</p>
         </div>
         <Picker />
         <div className="footer">
