@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CatImage from '../CatImage/CatImage';
+import Contenders from '../Contenders/Contenders';
 
 class Picker extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Picker extends Component {
 
       this.state = {
         cats: shuffledCats,
+        contenders: shuffledCats,
         eliteEight: [],
         finalFour: [],
         championship: [],
@@ -58,7 +60,8 @@ class Picker extends Component {
       this.state.eliteEight = shuffledEliteEight;
       this.setState({
         img1: this.state.eliteEight[0],
-        img2: this.state.eliteEight[1]
+        img2: this.state.eliteEight[1],
+        contenders: shuffledEliteEight
       });
     }
   }
@@ -76,7 +79,8 @@ class Picker extends Component {
       this.state.finalFour = shuffledFinalFour;
       this.setState({
         img1: this.state.finalFour[0],
-        img2: this.state.finalFour[1]
+        img2: this.state.finalFour[1],
+        contenders: shuffledFinalFour,
       });
     }
   }
@@ -92,22 +96,36 @@ class Picker extends Component {
     } else {
       this.setState({
         img1: this.state.championship[0],
-        img2: this.state.championship[1]
+        img2: this.state.championship[1],
+        contenders: this.state.championship
       });
     }
   }
 
   handleWinner(img) {
-    
+    this.setState({
+      contenders: [img]
+    });
   }
 
   render() {
-    return (
-      <div className="picker">
-        <CatImage img={this.state.img1} onClick={this.handleClick} />
-        <CatImage img={this.state.img2} onClick={this.handleClick} />
-      </div>
-    )
+    const {img1, img2, contenders} = this.state;
+    if (contenders.length == 1) {
+      return (
+        <div className="picker">
+          <CatImage img={contenders[0]} />
+          <Contenders list={contenders} />
+        </div>
+      )
+    } else {
+      return (
+        <div className="picker">
+          <CatImage img={img1} onClick={this.handleClick} />
+          <CatImage img={img2} onClick={this.handleClick} />
+          <Contenders list={contenders} />
+        </div>
+      )
+    }
   }
 }
 
